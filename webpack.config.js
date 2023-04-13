@@ -5,11 +5,10 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // extraer el codigo Css, minificarlo y optimizarlo. Ademas lo agrega como parte del head
-const MiniCsssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // nos permite copiar archivos de una ruta a otra 
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 // creamos una funcion de flecha
 module.exports = (env, argv) => {
@@ -20,6 +19,7 @@ module.exports = (env, argv) => {
     return {
         entry: {
             index: './src/index.js',
+            styles: './src/styles.js'
         },
         output: {
             filename: '[name].[contenthash].js',
@@ -51,7 +51,7 @@ module.exports = (env, argv) => {
         plugins: [
             new HtmlWebpackPlugin({
                 template: './src/index.html',
-                chunks: ['index']
+                chunks: ['index', 'styles']
             }),
             ...(isProduction ? [ new MiniCssExtractPlugin({ filename: 'assets/css/[name].[contenthash].css'})] : [])
         ],
