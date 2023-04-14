@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="es-CO">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profesores</title>
 </head>
+
 <body>
-    
+
     <header class="my-3">
         <h1 class="text-center"> Profesores </h1>
     </header>
@@ -16,80 +18,88 @@
 
         <section class="row text-center">
             <article class="col-xs-12 col-md-6">
-                imagen
+
+                <img src="./assets/img/teachers.jpg" alt="Profesores">
+                
             </article>
             <article class="col-xs-12 col-md-6">
                 formulario
             </article>
-        </section>        
+        </section>
         <section class="row">
 
             <div class="col-12">
-                <table class="table table-hover">
 
-                    <caption>
-                        Registros de los profesores
-                    </caption>
-                    
-                    <thead>
+                <div class="table responsive">
 
-                        <tr>
-                            <th scope="col">
-                                Id de profesor
-                            </th>
-                            <th scope="col">
-                                Nombre
-                            </th>
-                            <th scope="col">
-                                Descripcion
-                            </th>
-                            <th scope="col">
-                                Correo
-                            </th>
-                            <th scope="col">
-                                Fecha de nacimiento
-                            </th>
-                            <th scope="col">
-                                Opciones
-                            </th>
-                        </tr>
+                    <table class="table table-hover table-bordered">
 
-                    </thead>
+                        <caption>
+                            Registros de los profesores
+                        </caption>
 
-                    <tbody>
+                        <thead>
 
-                        <tr>
-                            <td>
-                                102323
-                            </td>
-                            <td>
-                                Camilo Restrepo
-                            </td>
-                            <td>
-                                Estudiante de la UPB
-                            </td>
-                            <td>
-                                C@gmail.com
-                            </td>
-                            <td>
-                                27/06/2001
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-primary">
-                                    <em class="fa fa-pencil"></em> Editar
-                                </button>
-                                <button type="button" class="btn btn-danger">
-                                    <em class="fa fa-trash"></em> Eliminar
-                                </button>
-                            </td>
-                        </tr>
+                            <tr class="table-dark text-center align-middle">
+                                <th scope="col">
+                                    Id de profesor
+                                </th>
+                                <th scope="col">
+                                    Nombre
+                                </th>
+                                <th scope="col">
+                                    Descripcion
+                                </th>
+                                <th scope="col">
+                                    Correo
+                                </th>
+                                <th scope="col">
+                                    Fecha de nacimiento
+                                </th>
+                                <th scope="col">
+                                    Opciones
+                                </th>
+                            </tr>
 
-                    </tbody>
+                        </thead>
 
-                </table>
+                        <tbody>
+
+                            <tr class="align-middle">
+                                <td class="text-center">
+                                    102323
+                                </td>
+                                <td>
+                                    Camilo Restrepo
+                                </td>
+                                <td>
+                                    Estudiante de la UPB
+                                </td>
+                                <td>
+                                    C@gmail.com
+                                </td>
+                                <td>
+                                    27/06/2001
+                                </td>
+                                <td>
+                                    <button type="button" class="btn btn-primary" title="Editar">
+                                        <em class="fa fa-pencil"></em>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" title="Eliminar">
+                                        <em class="fa fa-trash"></em>
+                                    </button>
+                                </td>
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
             </div>
-            
-            
+
+
 
         </section>
 
@@ -98,6 +108,7 @@
     <footer>
         Derechos reservados por Camilo <em class="fa-solid fa-house"></em>
     </footer>
-    
+
 </body>
+
 </html>
