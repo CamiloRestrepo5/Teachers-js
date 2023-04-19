@@ -1,1 +1,0 @@
-// se va a encargar de toda la interacción de javaScript con HTML
