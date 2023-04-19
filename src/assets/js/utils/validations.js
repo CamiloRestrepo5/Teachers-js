@@ -1,0 +1,1 @@
+// vamos a hacer un archivo de mostrar validacions y ejecutarlas
