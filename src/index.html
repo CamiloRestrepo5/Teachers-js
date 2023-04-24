@@ -9,17 +9,16 @@
 </head>
 
 <body>
-
     <header class="my-3">
-        <h1 class="text-center">Profesores</h1>
+        <h1 class="text-center"> Profesores </h1>
     </header>
 
     <main class="container">
 
         <section class="row text-center">
-            <article class="col-xs-12 col-md-6">
+            <article class="col-xs-12 col-md-6 mb-3">
 
-                <img class="img-fluid rounded mb-3" src="./assets/img/teachers.jpg" alt="Profesores">
+                <img class="img-fluid rounded" src="./assets/img/teachers.jpg" alt="Profesores">
 
             </article>
             <article class="col-xs-12 col-md-6">
@@ -27,40 +26,35 @@
                 <form novalidate class="form-floating" id="teacherForm">
 
                     <div class="form-floating mb-3">
-                        <input type="text" id="txtName" name="txtName" placeholder="Ejm: Camilo" class="form-control">
+                        <input type="text" id="txtName" name="txtName" class="form-control" placeholder="Ejm: Yhoan">
                         <label for="txtName">Nombre</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <textarea name="txtDescription" id="txtDescription" cols="30" rows="10" class="form-control"
-                            placeholder="Descripcion"></textarea>
+                        <textarea name="txtDescription" id="txtDescription" cols="30" rows="10" class="form-control"></textarea>
                         <label for="txtDescription">Descripción</label>
-
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="text" id="txtEmail" name="txtEmail" placeholder="Ejm: Camilo@gmail.com"
-                            class="form-control">
+                        <input type="email" id="txtEmail" name="txtEmail" class="form-control" placeholder="Ejm: yhoan@gmail.com">
                         <label for="txtEmail">Correo electrónico</label>
                     </div>
 
                     <div class="form-floating mb-3">
-                        <input type="date" id="txtBirthDate" name="txtBirthDate" placeholder="ejm: 25/07/2023"
-                            class="form-control">
+                        <input type="date" id="txtBirthDate" name="txtBirthDate" class="form-control" placeholder="Ejm: 05/07/1993">
                         <label for="txtBirthDate">Fecha de nacimiento</label>
                     </div>
 
                     <div class="row">
-                        <div class="d-grid col-md-6">
+                        <div class="d-grid col-md-6 mb-3">
                             <button type="reset" id="btnCancel" class="btn btn-secondary">Cancelar</button>
                         </div>
-                        <div class="d-grid col-md-6">
+                        <div class="d-grid col-md-6 mb-3">
                             <button type="submit" id="btnSubmit" class="btn btn-success">Enviar</button>
-                            
+                        </div>
                     </div>
 
                 </form>
-
 
             </article>
         </section>
@@ -69,9 +63,9 @@
 
             <div class="col-12">
 
-                <div class="table responsive">
+                <div class="table-responsive">
 
-                    <table class="table table-hover table-bordered">
+                    <table id="tblTeachers" class="table table-hover table-bordered">
 
                         <caption>
                             Registros de los profesores
@@ -79,7 +73,7 @@
 
                         <thead>
 
-                            <tr class="table-dark text-center align-middle">
+                            <tr class="table-dark text-center">
                                 <th scope="col">
                                     Id de profesor
                                 </th>
@@ -87,13 +81,13 @@
                                     Nombre
                                 </th>
                                 <th scope="col">
-                                    Descripcion
+                                    Descripción
                                 </th>
                                 <th scope="col">
                                     Correo
                                 </th>
                                 <th scope="col">
-                                    Fecha de nacimiento
+                                    Fecha nacimiento
                                 </th>
                                 <th scope="col">
                                     Opciones
@@ -103,33 +97,6 @@
                         </thead>
 
                         <tbody>
-
-                            <tr class="align-middle">
-                                <td class="text-center">
-                                    102323
-                                </td>
-                                <td>
-                                    Camilo Restrepo
-                                </td>
-                                <td>
-                                    Estudiante de la UPB
-                                </td>
-                                <td>
-                                    C@gmail.com
-                                </td>
-                                <td>
-                                    27/06/2001
-                                </td>
-                                <td>
-                                    <button type="button" class="btn btn-primary" title="Editar">
-                                        <em class="fa fa-pencil"></em>
-                                    </button>
-                                    <button type="button" class="btn btn-danger" title="Eliminar">
-                                        <em class="fa fa-trash"></em>
-                                    </button>
-                                </td>
-                            </tr>
-
                         </tbody>
 
                     </table>
@@ -138,14 +105,12 @@
 
             </div>
 
-
-
         </section>
 
     </main>
 
     <footer>
-        Derechos reservados por Camilo <em class="fa-solid fa-house"></em>
+        Derechos reservados por Yhoan <em class="fa-regular fa-copyright"></em>
     </footer>
 
 </body>

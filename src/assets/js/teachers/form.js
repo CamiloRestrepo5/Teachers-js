@@ -1,9 +1,8 @@
-// encargado de la interacción y configuaración del formulario 
+// encargado de la interacción y configuración del formulario
 
 /**
- * este objeto contiene las referencias a los elementos clave del formulario
+ * Este objeto contiene las referencias a los elementos clave del formulario
  */
-
 export const formElements = {
     form: document.getElementById('teacherForm'),
     fields: {
@@ -15,12 +14,20 @@ export const formElements = {
 };
 
 export function getFormData() {
-        const teacher = {
-            name: formElements.fields.name.value,
-            description: formElements.fields.description.value,
-            email: formElements.fields.email.value,
-            birthDate: formElements.fields.birthDate.value,
-        };
-        return teacher;
+    /**
+     * const formData = new FormData(formElements.form);
+     * return Object.fromEntries(formData.entries());
+     */
+    const teacher = {
+        id: new Date().getTime(),
+        name: formElements.fields.name.value,
+        description: formElements.fields.description.value,
+        email: formElements.fields.email.value,
+        birthDate: formElements.fields.birthDate.value,
+    };
+    return teacher;
 }
 
+export function resetForm() {
+    formElements.form.reset();
+}
