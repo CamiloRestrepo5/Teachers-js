@@ -13,6 +13,75 @@ export const formElements = {
     }
 };
 
+/**
+ * Array de objetos que contiene información para las validaciones
+ * Cada objeto contiene una referencia a cada campo, un array de objetos
+ * de validaciones que tendrá, el ID del error, el mensaje y la función de validación
+ */
+export const fieldConfigurations = [
+    {
+        input: formElements.fields.name,
+        validations: [
+            {
+                errorId: `${formElements.fields.name.id}Required`,
+                errorMessage: 'El nombre es obligatorio.',
+                // Las validaciones retornaran un false cuando debe mostrar el mensaje de error
+                // y un true cuando no debe mostrarlo
+                validationFunction: (value) => {
+                    return value.trim() !== '';
+                }
+            }
+        ]
+    },
+
+    {
+        input: formElements.fields.description,
+        validations: [
+            {
+                errorId: `${formElements.fields.description.id}Required`,
+                errorMessage: 'La descripción es obligatoria.',
+                validationFunction: (value) => {
+                    return value.trim() !== '';
+                }
+            }
+        ]
+    },
+
+    {
+        input: formElements.fields.email,
+        validations: [
+            {
+                errorId: `${formElements.fields.email.id}Required`,
+                errorMessage: 'El correo electrónico es obligatorio.',
+                validationFunction: (value) => {
+                    return value.trim() !== '';
+                }
+            },
+            {
+                errorId:`${formElements.fields.email.id}Pattern`,
+                errorMessage:"El correro electrónico no cumple con el formato correcto",
+                validationFunction: (value) => {
+                    return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value);
+
+                }
+            }
+        ]
+    },
+
+    {
+        input: formElements.fields.birthDate,
+        validations: [
+            {
+                errorId: `${formElements.fields.birthDate.id}Required`,
+                errorMessage: 'La fecha de nacimiento es obligatoria.',
+                validationFunction: (value) => {
+                    return value.trim() !== '';
+                }
+            }
+        ]
+    },
+];
+
 export function getFormData() {
     /**
      * const formData = new FormData(formElements.form);

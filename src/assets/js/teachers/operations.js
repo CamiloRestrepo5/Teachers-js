@@ -1,23 +1,38 @@
 // Encargado de la interacción de js con html
+// Third Libraries
 import alertify from 'alertifyjs';
 
-import { formElements, getFormData, resetForm } from './form';
+// Own Libraries
+import { validateForm, validateField, removeInputErrorMessage, removeErrorClassNameFields, removeErrorMessageElements } from './../utils/validations';
+import { createEmptyRow, createActionButton } from './../utils/table';
+
+// Module Libraries
+import { formElements, fieldConfigurations, getFormData, resetForm } from './form';
 import { createTeacher, readTeachers } from './repository';
 
 export function listeners() {
     window.addEventListener('load', () => {
         listenFormSubmitEvent();
         listTeachers();
+        listenFormFieldsChangeEvent();
+        listenFormResetEvent();
     });
 }
 
 function listenFormSubmitEvent() {
     formElements.form.addEventListener('submit', (event) => {
         event.preventDefault();
-        createTeacher(getFormData());
-        resetForm();
-        alertify.success('Profesor guardado correctamente');
-        listTeachers();
+        alertify.dismissAll();
+        if (validateForm(fieldConfigurations)) {
+            createTeacher(getFormData());
+            resetForm();
+            removeErrorClassNameFields('is-valid');
+            alertify.success('Profesor guardado correctamente');
+            listTeachers();
+        } else {
+            alertify.error('Verificar los datos del formulario');
+        }
+
     });
 }
 
@@ -56,28 +71,23 @@ function listTeachers() {
             const colButtons = document.createElement('td');
             colButtons.classList.add('text-center');
 
-            const editButton = document.createElement('button');
-            editButton.classList.add('btn', 'btn-primary', 'btn-edit', 'm-1');
-            editButton.dataset.id = id;
-            editButton.setAttribute('title', 'Editar');
-
-            const editIcon = document.createElement('em');
-            editIcon.classList.add('fa', 'fa-pencil');
-            editButton.appendChild(editIcon);
-
+            const editButton = createActionButton({
+                buttonClass: 'btn-primary',
+                buttonClassIdentifier: 'btn-edit',
+                title: 'Editar',
+                icon: 'fa-pencil',
+                dataId: id
+            });
             colButtons.appendChild(editButton);
 
-            const deleteButton = document.createElement('button');
-            deleteButton.classList.add('btn', 'btn-danger', 'btn-delete', 'm-1');
-            deleteButton.dataset.id = id;
-            deleteButton.setAttribute('title', 'Eliminar');
-
-            const deleteIcon = document.createElement('em');
-            deleteIcon.classList.add('fa', 'fa-trash');
-            deleteButton.appendChild(deleteIcon);
-
+            const deleteButton = createActionButton({
+                buttonClass: 'btn-danger',
+                buttonClassIdentifier: 'btn-delete',
+                title: 'Eliminar',
+                icon: 'fa-trash',
+                dataId: id
+            });
             colButtons.appendChild(deleteButton);
-
 
             // Agrego las columnas a la fila
             row.appendChild(colId);
@@ -93,14 +103,28 @@ function listTeachers() {
 
     } else {
 
-        const rowEmpty = document.createElement('tr');
-        const colEmpty = document.createElement('td');
-        colEmpty.setAttribute('colspan', '6');
-        colEmpty.textContent = "No se encuentran registros disponibles";
-        colEmpty.classList.add('text-center');
-        rowEmpty.appendChild(colEmpty);
-
+        const rowEmpty = createEmptyRow(6, "No se encuentran registros disponibles");
         tbody.appendChild(rowEmpty);
 
     }
+}
+
+function listenFormFieldsChangeEvent() {
+    fieldConfigurations.forEach(({ input, validations }) => {
+        input.addEventListener('change', () => {
+            removeInputErrorMessage(input);
+            validations.forEach((validationConfig) => {
+                validateField(input, validationConfig);
+            });
+        })
+    });
+}
+
+function listenFormResetEvent() {
+    formElements.form.addEventListener('reset', () => {
+        removeErrorMessageElements();
+        removeErrorClassNameFields('is-valid');
+        resetForm();
+        alertify.dismissAll();
+    });
 }
